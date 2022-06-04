@@ -5,6 +5,7 @@ const MainLayout = React.lazy(() => import('../layouts/MainLayout'));
 const EmptyLayout = React.lazy(() => import('../layouts/EmptyLayout'));
 
 const BranchesList = React.lazy(() => import('../pages/BranchesList'));
+const Login = React.lazy(() => import('../pages/Login'));
 const NotFound = React.lazy(() => import('../pages/NotFound'));
 
 const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
@@ -30,14 +31,20 @@ const privateRoutes = [
         exact: true,
         layout: EmptyLayout,
         component: NotFound
-    }
+    },
+    {
+        path: '/login',
+        exact: true,
+        layout: EmptyLayout,
+        component: Login
+    },
 ];
 const publicRoutes = [
     {
         path: '/',
         exact: true,
-        layout: MainLayout,
-        component: BranchesList
+        layout: EmptyLayout,
+        component: Login
     },
     {
         path: '/404',
